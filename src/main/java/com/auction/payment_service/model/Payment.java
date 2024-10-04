@@ -22,8 +22,8 @@ public class Payment {
     private String issueNumber;
     private String securityNumber;
     private Double amount;
-    private Long userId;     // Reference to User (Buyer)
-    private Long productId;  // Reference to Product
+    private Long userId;
+    private Long productId;
     private String paymentMethod;
     private LocalDateTime paymentDate;
     private boolean isSuccessful;
