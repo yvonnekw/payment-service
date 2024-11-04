@@ -16,7 +16,7 @@ future developemtn -
  */
 @Builder
 public record PaymentRequest(
-        Long paymentId,
+        //Long paymentId,
         BigDecimal amount,
         PaymentMethod paymentMethod,
         Long orderId,

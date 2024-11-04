@@ -7,6 +7,10 @@ import java.time.LocalDateTime;
 
 
 @Builder
-public record InvoiceResponse(Long invoiceId, Long paymentId, String invoiceNumber, LocalDateTime invoiceDate) {
+public record InvoiceResponse(
+        Long invoiceId,
+        Long paymentId,
+        String invoiceNumber,
+        LocalDateTime invoiceDate) {
 
 }

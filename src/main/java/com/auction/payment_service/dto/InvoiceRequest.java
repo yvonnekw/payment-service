@@ -6,5 +6,9 @@ import java.time.LocalDateTime;
 
 
 @Builder
-public record InvoiceRequest(Long invoiceId, Long paymentId, String invoiceNumber, LocalDateTime invoiceDate) {
+public record InvoiceRequest(
+        Long invoiceId,
+        Long paymentId,
+        String invoiceNumber,
+        LocalDateTime invoiceDate) {
 }
