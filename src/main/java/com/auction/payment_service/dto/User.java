@@ -6,7 +6,7 @@ import org.springframework.validation.annotation.Validated;
 
 @Validated
 public record User(
-        Long userId,
+        String username,
         @NotNull(message = "Firstname is require.")
         String firstName,
         @NotNull(message = "Lastname is require.")

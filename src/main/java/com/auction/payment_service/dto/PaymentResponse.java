@@ -15,7 +15,7 @@ public record PaymentResponse(
         String issueNumber,
         String securityNumber,
         Double amount,
-        Long userId,
+        //String username,
         Long productId,
         String paymentMethod,
         LocalDateTime paymentDate,

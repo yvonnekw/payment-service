@@ -19,6 +19,25 @@ public class PaymentService {
     private final PaymentRepository paymentRepository;
     private final PaymentMapper paymentMapper;
     private final NotificationProducer notificationProducer;
+
+    public Long createPayment(String firstName, String lastName, String email, PaymentRequest paymentRequestBody) {
+        var payment = paymentRepository.save(paymentMapper.toPayment(paymentRequestBody));
+
+        notificationProducer.sendNotification(
+                new PaymentNotificationRequest(
+                        paymentRequestBody.orderReference(),
+                        paymentRequestBody.amount(),
+                        paymentRequestBody.paymentMethod(),
+                        firstName,
+                        lastName,
+                        email
+                )
+        );
+        return payment.getPaymentId();
+    }
+
+
+    /*
     public Long createPayment(PaymentRequest paymentRequestBody) {
 
         var payment = paymentRepository.save(paymentMapper.toPayment(paymentRequestBody));
@@ -34,7 +53,7 @@ public class PaymentService {
         );
         return payment.getPaymentId();
     }
-
+*/
     /*
 
     public List<PaymentResponse> getAllPayments() {

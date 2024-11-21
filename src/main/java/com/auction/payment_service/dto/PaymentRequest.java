@@ -21,7 +21,7 @@ public record PaymentRequest(
         PaymentMethod paymentMethod,
         Long orderId,
         String orderReference,
-        User User,
+       // User User,
         LocalDateTime createdDate,
         LocalDateTime lastModifiedDate,
         boolean isSuccessful) {
