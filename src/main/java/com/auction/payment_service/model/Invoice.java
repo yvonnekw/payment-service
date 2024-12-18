@@ -17,9 +17,8 @@ import java.time.LocalDateTime;
 public class Invoice {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
-    private Long paymentId;  // Reference to Payment
+    private Long invoiceId;
+    private Long paymentId;
     private String invoiceNumber;
     private LocalDateTime invoiceDate;
 }
