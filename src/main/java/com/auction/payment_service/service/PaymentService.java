@@ -5,7 +5,6 @@ import com.auction.payment_service.dto.PaymentRequest;
 import com.auction.payment_service.notification.NotificationProducer;
 import com.auction.payment_service.notification.PaymentNotificationRequest;
 import com.auction.payment_service.repository.PaymentRepository;
-import com.auction.payment_service.service.PaymentMapper;
 import lombok.*;
 
 import lombok.extern.slf4j.Slf4j;
@@ -20,7 +19,7 @@ public class PaymentService {
     private final PaymentMapper paymentMapper;
     private final NotificationProducer notificationProducer;
 
-    public Long createPayment(String firstName, String lastName, String email, PaymentRequest paymentRequestBody) {
+    public Long processPayment(String firstName, String lastName, String email, PaymentRequest paymentRequestBody) {
         var payment = paymentRepository.save(paymentMapper.toPayment(paymentRequestBody));
 
         notificationProducer.sendNotification(
