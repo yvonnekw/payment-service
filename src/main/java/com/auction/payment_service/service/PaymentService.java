@@ -19,7 +19,7 @@ public class PaymentService {
     private final PaymentMapper paymentMapper;
     private final NotificationProducer notificationProducer;
 
-    public Long processPayment(String firstName, String lastName, String email, PaymentRequest paymentRequestBody) {
+    public Long processPayment(String username, String firstName, String lastName, String email, PaymentRequest paymentRequestBody) {
         var payment = paymentRepository.save(paymentMapper.toPayment(paymentRequestBody));
 
         notificationProducer.sendNotification(
@@ -27,6 +27,7 @@ public class PaymentService {
                         paymentRequestBody.orderReference(),
                         paymentRequestBody.amount(),
                         paymentRequestBody.paymentMethod(),
+                        username,
                         firstName,
                         lastName,
                         email
