@@ -18,6 +18,7 @@ public class PaymentController {
 
     @PostMapping("/process-payment")
     public ResponseEntity<Long> processPayment(
+            @RequestHeader("Authorization") String token,
             @RequestHeader("X-Username") String username,
             @RequestHeader("X-FirstName") String firstName,
             @RequestHeader("X-LastName") String lastName,
