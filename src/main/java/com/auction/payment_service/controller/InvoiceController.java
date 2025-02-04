@@ -22,7 +22,7 @@ public class InvoiceController {
 
     @PostMapping("/create-invoice")
     @ResponseStatus(HttpStatus.CREATED)
-    public InvoiceResponse createInvoice(@RequestBody InvoiceRequest invoiceRequest) {
+    public InvoiceResponse createInvoice(@RequestHeader("Authorization") String token, @RequestBody InvoiceRequest invoiceRequest) {
         return invoiceService.createInvoice(invoiceRequest);
     }
 

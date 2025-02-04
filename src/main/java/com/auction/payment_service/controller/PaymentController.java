@@ -18,14 +18,16 @@ public class PaymentController {
 
     @PostMapping("/process-payment")
     public ResponseEntity<Long> processPayment(
+            @RequestHeader("Authorization") String token,
+            @RequestHeader("X-Username") String username,
             @RequestHeader("X-FirstName") String firstName,
             @RequestHeader("X-LastName") String lastName,
             @RequestHeader("X-Email") String email,
             @RequestBody PaymentRequest paymentRequest) {
 
-        log.info("Received payment request for user: {}, {}, {}", firstName, lastName, email);
+        log.info("Received payment request for user: {}, {}, {}, {}", username, firstName, lastName, email);
 
-        return ResponseEntity.ok(paymentService.processPayment(firstName, lastName, email, paymentRequest));
+        return ResponseEntity.ok(paymentService.processPayment(username, firstName, lastName, email, paymentRequest));
     }
 
 
