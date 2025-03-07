@@ -37,13 +37,14 @@ public class Payment {
     private BigDecimal amount;
     @Enumerated(STRING)
     private PaymentMethod paymentMethod;
+    private String orderReference;
     private Long orderId;
     private String username;
     @CreatedDate
     @Column(updatable = false, nullable = false)
     private LocalDateTime createdDate;
     @LastModifiedDate
-    @Column(insertable = false)
+    @Column(nullable = false)
     private LocalDateTime lastModifiedDate;
 
 }
