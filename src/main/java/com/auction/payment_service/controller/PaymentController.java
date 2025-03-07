@@ -1,5 +1,6 @@
 package com.auction.payment_service.controller;
 
+import com.auction.payment_service.model.Payment;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
@@ -7,6 +8,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import com.auction.payment_service.service.*;
 import com.auction.payment_service.dto.*;
+
+import java.util.List;
 
 @RestController
 @Slf4j
@@ -17,7 +20,22 @@ public class PaymentController {
     private final PaymentService paymentService;
 
     @PostMapping("/process-payment")
-    public ResponseEntity<Long> processPayment(
+    public ResponseEntity<PaymentResponse> processPayment(
+            @RequestHeader("Authorization") String token,
+            @RequestHeader("X-Username") String username,
+            @RequestHeader("X-FirstName") String firstName,
+            @RequestHeader("X-LastName") String lastName,
+            @RequestHeader("X-Email") String email,
+            @RequestBody OrderPaymentRequest orderPaymentRequest) {
+
+        log.info("Received payment request for user: {}, {}, {}, {}, {}", username, firstName, lastName, email, orderPaymentRequest);
+
+        return paymentService.processPayment(username, firstName, lastName, email, orderPaymentRequest);
+    }
+
+    /*
+    @PostMapping("/process-payment")
+    public PaymentResponse processPayment(
             @RequestHeader("Authorization") String token,
             @RequestHeader("X-Username") String username,
             @RequestHeader("X-FirstName") String firstName,
@@ -27,9 +45,12 @@ public class PaymentController {
 
         log.info("Received payment request for user: {}, {}, {}, {}", username, firstName, lastName, email);
 
-        return ResponseEntity.ok(paymentService.processPayment(username, firstName, lastName, email, paymentRequest));
-    }
+        PaymentResponse paymentResponse = paymentService.processPayment(username, firstName, lastName, email, paymentRequest);
 
+        //return ResponseEntity.ok(paymentService.processPayment(username, firstName, lastName, email, paymentRequest));
+        return ResponseEntity.ok(paymentResponse);
+    }
+*/
 
     /*
     @PostMapping("/create-payment")
@@ -39,13 +60,14 @@ public class PaymentController {
     }
 
      */
-/*
+
     @GetMapping("/get-all-payments")
     @ResponseStatus(HttpStatus.OK)
-    public List<PaymentResponse> getAllPayments() {
+    public List<Payment> getAllPayments(@RequestHeader("Authorization") String token) {
+
         return paymentService.getAllPayments();
     }
-*/
+
     @GetMapping()
     @ResponseStatus(HttpStatus.OK)
     public String getPayment() {

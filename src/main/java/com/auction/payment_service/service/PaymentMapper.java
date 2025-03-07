@@ -1,18 +1,24 @@
 package com.auction.payment_service.service;
 
+import com.auction.payment_service.dto.OrderPaymentRequest;
 import com.auction.payment_service.dto.PaymentRequest;
 import com.auction.payment_service.model.Payment;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 @Service
+@Slf4j
 public class PaymentMapper {
 
-    public Payment toPayment(PaymentRequest request) {
+    public Payment toPayment(OrderPaymentRequest request, String username) {
+        log.info("Payment request in toPayment, {},{},{},", request.getOrderRequest().totalAmount(), request.getPaymentRequest().paymentMethod(), request.getOrderRequest().orderReference());
         return Payment.builder()
-               // .paymentId(request.paymentId())
-                .orderId(request.orderId())
-                .paymentMethod(request.paymentMethod())
-                .amount(request.amount())
+                .orderReference(request.getOrderRequest().orderReference())
+                //.orderId(request.getOrderRequest().or)
+                .paymentMethod(request.getPaymentRequest().paymentMethod())
+                .amount(request.getOrderRequest().totalAmount())
+                //.lastModifiedDate(request.lastModifiedDate())
+                .username(username)
                 .build();
     }
 }
