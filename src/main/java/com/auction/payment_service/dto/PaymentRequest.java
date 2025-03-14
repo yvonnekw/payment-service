@@ -19,12 +19,12 @@ public record PaymentRequest(
         //Long paymentId,
         BigDecimal amount,
         PaymentMethod paymentMethod,
-        Long orderId,
-        String orderReference,
+       // Long orderId,
+       // String orderReference,
        // String username,
         // User User,
-        LocalDateTime createdDate,
-        LocalDateTime lastModifiedDate,
+        //LocalDateTime createdDate,
+       // LocalDateTime lastModifiedDate,
         boolean isSuccessful) {
 
 }

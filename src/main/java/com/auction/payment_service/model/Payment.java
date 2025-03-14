@@ -22,6 +22,7 @@ later development -
      private boolean isSuccessful;
  */
 
+
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
@@ -38,7 +39,7 @@ public class Payment {
     @Enumerated(STRING)
     private PaymentMethod paymentMethod;
     private String orderReference;
-    private Long orderId;
+    //private Long orderId;
     private String username;
     @CreatedDate
     @Column(updatable = false, nullable = false)
