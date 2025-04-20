@@ -39,7 +39,6 @@ public class Payment {
     @Enumerated(STRING)
     private PaymentMethod paymentMethod;
     private String orderReference;
-    //private Long orderId;
     private String username;
     @CreatedDate
     @Column(updatable = false, nullable = false)

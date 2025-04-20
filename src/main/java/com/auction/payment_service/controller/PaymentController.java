@@ -33,33 +33,6 @@ public class PaymentController {
         return paymentService.processPayment(username, firstName, lastName, email, orderPaymentRequest);
     }
 
-    /*
-    @PostMapping("/process-payment")
-    public PaymentResponse processPayment(
-            @RequestHeader("Authorization") String token,
-            @RequestHeader("X-Username") String username,
-            @RequestHeader("X-FirstName") String firstName,
-            @RequestHeader("X-LastName") String lastName,
-            @RequestHeader("X-Email") String email,
-            @RequestBody PaymentRequest paymentRequest) {
-
-        log.info("Received payment request for user: {}, {}, {}, {}", username, firstName, lastName, email);
-
-        PaymentResponse paymentResponse = paymentService.processPayment(username, firstName, lastName, email, paymentRequest);
-
-        //return ResponseEntity.ok(paymentService.processPayment(username, firstName, lastName, email, paymentRequest));
-        return ResponseEntity.ok(paymentResponse);
-    }
-*/
-
-    /*
-    @PostMapping("/create-payment")
-    @ResponseStatus(HttpStatus.CREATED)
-    public ResponseEntity<Long> createPayment(@RequestBody @Valid PaymentRequest paymentRequest) {
-        return ResponseEntity.ok(paymentService.createPayment(paymentRequest));
-    }
-
-     */
 
     @GetMapping("/get-all-payments")
     @ResponseStatus(HttpStatus.OK)

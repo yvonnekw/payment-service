@@ -2,7 +2,6 @@ package com.auction.payment_service.service;
 
 
 import com.auction.payment_service.dto.OrderPaymentRequest;
-import com.auction.payment_service.dto.PaymentRequest;
 import com.auction.payment_service.dto.PaymentResponse;
 import com.auction.payment_service.model.Payment;
 import com.auction.payment_service.notification.NotificationProducer;
@@ -55,48 +54,9 @@ public class PaymentService {
         return ResponseEntity.ok(paymentResponse);
     }
 
-/*
-    public ResponseEntity<PaymentResponse> processPayment(String username, String firstName, String lastName, String email, PaymentRequest paymentRequestBody) {
-        var payment = paymentRepository.save(paymentMapper.toPayment(paymentRequestBody));
-
-        notificationProducer.sendNotification(
-                new PaymentNotificationRequest(
-                        paymentRequestBody.orderReference(),
-                        paymentRequestBody.amount(),
-                        paymentRequestBody.paymentMethod(),
-                        username,
-                        firstName,
-                        lastName,
-                        email
-                )
-        );
-        return payment.getPaymentId();
-    }
-
-*/
-    /*
-    public Long createPayment(PaymentRequest paymentRequestBody) {
-
-        var payment = paymentRepository.save(paymentMapper.toPayment(paymentRequestBody));
-        notificationProducer.sendNotification(
-                new PaymentNotificationRequest(
-                        paymentRequestBody.orderReference(),
-                        paymentRequestBody.amount(),
-                        paymentRequestBody.paymentMethod(),
-                        paymentRequestBody.User().firstName(),
-                        paymentRequestBody.User().lastName(),
-                        paymentRequestBody.User().email()
-                )
-        );
-        return payment.getPaymentId();
-    }
-*/
-
-
     public List<Payment> getAllPayments() {
         return paymentRepository.findAll()
                 .stream()
-                //.map(payment -> new PaymentResponse(payment.getPaymentId(),  payment.getAmount(), payment.getPaymentMethod())
                 .toList();
     }
 
