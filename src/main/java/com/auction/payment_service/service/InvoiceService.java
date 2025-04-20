@@ -3,7 +3,6 @@ package com.auction.payment_service.service;
 
 import com.auction.payment_service.dto.InvoiceRequest;
 import com.auction.payment_service.dto.InvoiceResponse;
-import com.auction.payment_service.dto.PaymentResponse;
 import com.auction.payment_service.model.Invoice;
 import com.auction.payment_service.repository.InvoiceRepository;
 import lombok.RequiredArgsConstructor;
